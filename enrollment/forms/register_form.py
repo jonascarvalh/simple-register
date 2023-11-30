@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from phonenumber_field.modelfields import PhoneNumberField
+from phonenumber_field.formfields import PhoneNumberField
 
 class RegisterForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
@@ -47,7 +47,7 @@ class RegisterForm(forms.ModelForm):
         error_messages={'required': 'A senha não pode ser vazia'},
         widget=forms.PasswordInput(),
         required=True,
-        label='Senha'
+        label='Confirme sua senha'
     )
 
     class Meta:
@@ -57,5 +57,5 @@ class RegisterForm(forms.ModelForm):
             'last_name',
             'email',
             'password',
-            'number',
+            'phone',
         ]
