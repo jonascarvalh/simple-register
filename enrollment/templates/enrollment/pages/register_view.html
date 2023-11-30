@@ -1,9 +1,9 @@
 {% extends "global/base.html" %}
 
 {% block content %}
-    <h1>Register</h1>
+    <h1>Registro</h1>
     <div>
-        <form action="" method="POST">
+        <form action="" method="POST"> {% csrf_token %}
             {% for field in form %}
                 <div>
                     <label for="{{field.id_for_label}}">
@@ -13,13 +13,24 @@
                     {% if field.help_text %}
                         <p>{{field.help_text}}</p>
                     {% endif %}
-                    
                     {{field.errors}}
                 </div>
             {% endfor %}
+
+            {% comment %} 
+                Before Create attr in models for enroll
+                <label for="enroll">Tipo de Matrícula</label>
+                <select name="enroll" id="enroll">
+                    <option value="student">Estudante da UEMA</option>
+                    <option value="employee">Funcionário da UEMA</option>
+                    <option value="teacher">Professor da UEMA</option>
+                    <option value="extern">Público Externo</option>
+                </select> 
+            {% endcomment %}
+
             <div>
                 <button type="submit">
-                    Register
+                    Registrar
                 </button>
             </div>
         </form>

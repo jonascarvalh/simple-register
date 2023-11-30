@@ -50,12 +50,15 @@ class RegisterForm(forms.ModelForm):
         label='Confirme sua senha'
     )
 
+    # create enroll_type later
+    
     class Meta:
         model = User
         fields = [
             'first_name',
             'last_name',
             'email',
-            'password',
             'phone',
+            'password',
+            'password2',
         ]
