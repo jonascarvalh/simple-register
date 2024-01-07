@@ -8,7 +8,7 @@ class RegisterForm(forms.ModelForm):
     name = forms.CharField(
         error_messages={'required': 'Escreva o seu primeiro nome'},
         required=True,
-        label='Primeiro Nome'
+        label='Nome Completo'
     )
 
     email = forms.EmailField(
