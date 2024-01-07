@@ -1,6 +1,5 @@
 from django import forms
 from django.contrib.auth.models import User
-from phonenumber_field.formfields import PhoneNumberField
 
 class RegisterForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
@@ -30,12 +29,6 @@ class RegisterForm(forms.ModelForm):
         label='E-mail'
     )
 
-    phone = PhoneNumberField(
-        error_messages={'required': 'O número é obrigatório'},
-        required=True,
-        label='Celular'
-    )
-
     password = forms.CharField(
         error_messages={'required': 'A senha não pode ser vazia'},
         widget=forms.PasswordInput(),
@@ -58,7 +51,6 @@ class RegisterForm(forms.ModelForm):
             'first_name',
             'last_name',
             'email',
-            'phone',
             'password',
             'password2',
         ]

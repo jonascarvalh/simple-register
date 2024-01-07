@@ -12,5 +12,25 @@ def register_view(request):
         request,
         'enrollment/pages/register_view.html',{
             "form": form,
+            "form_action": reverse('enrollment:register_create')
         }
     )
+
+def register_create(request):
+    if not request.POST:
+        raise Http404()
+    
+    POST = request.POST
+    request.session['register_form_data'] = POST
+    form = RegisterForm(POST)
+
+    if form.is_valid():
+        user = form.save(commit=False)
+        user.set_password(user.password)
+        user.save()
+
+        del(request.session['register_form_data'])
+        return redirect(reverse('enrollment:login'))
+    
+    return redirect(reverse('enrollment:registro'))
+
