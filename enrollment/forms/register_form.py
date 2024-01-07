@@ -5,22 +5,10 @@ class RegisterForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-    # enroll type create later
-        # extern
-        # employee
-        # student (matricula no SIGUEMA)
-        # teacher (matricula no SIGUEMA)
-
-    first_name = forms.CharField(
+    name = forms.CharField(
         error_messages={'required': 'Escreva o seu primeiro nome'},
         required=True,
         label='Primeiro Nome'
-    )
-
-    last_name = forms.CharField(
-        error_messages={'required': 'Escreva o seu sobrenome'},
-        required=True,
-        label='Sobrenome'
     )
 
     email = forms.EmailField(
@@ -48,8 +36,7 @@ class RegisterForm(forms.ModelForm):
     class Meta:
         model = User
         fields = [
-            'first_name',
-            'last_name',
+            'name',
             'email',
             'password',
             'password2',
